@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"code-runner.clearPreviousOutput": true,
+		"code-runner.saveFileBeforeRun": true,
+		"editor.fontFamily": "JetBrains Mono",
+		"workbench.iconTheme": "material-icon-theme",
+		"liveServer.settings.donotShowInfoMsg": true,
+		"liveServer.settings.CustomBrowser": "chrome",
+		"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+		"workbench.colorTheme": "Atom One Dark",
+		"liveServer.settings.port": 5503
+	}
+}

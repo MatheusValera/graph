@@ -2,24 +2,26 @@
 <html lang="pt-br">
   <head>
     <title>Graph</title>
-    <link rel="stylesheet" href="static/css/css.css">
+    <link rel="stylesheet" href="/static/styles/css/style.css">
     <meta charset="utf-8">
   </head>
   <body>
-    <input type="text" placeholder="a,b,c,d,e,f..." id="vertices">
-    <label for="vertices">Vertices</label>
-    <input type="text" placeholder="(a.b),(b.c)..." id="edges">
-    <label for="edges">Edges</label>
-    <input type="radio" name="typeGraph" checked="" value="graph" id="graph">
-    <label for="vertices">Graph</label>
-    <input type="radio" name="typeGraph" value="digraph" id="digraph">
-    <label for="edges">Digraph</label>
+    <main>
+      <form>
+        <input type="text" placeholder="a,b,c,d,e,f..." id="vertices">
+        <label for="vertices">Vertices</label>
+        <input type="text" placeholder="(a.b),(b.c)..." id="edges">
+        <label for="edges">Edges</label>
+        <input type="radio" name="typeGraph" checked="" value="graph" id="graph">
+        <label for="vertices">Graph</label>
+        <input type="radio" name="typeGraph" value="digraph" id="digraph">
+        <label for="edges">Digraph</label>
+      </form>
 
-    <div id="results">
-
-    </div>
+      <div id="results"></div>
+    </main>
 
     <button onclick="getData()">Gerar</button>
   </body>
-  <script src="/static/js/script.js"></script>
+  <script src="/static/scripts/script.js"></script>
 </html>

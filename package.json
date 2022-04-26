@@ -4,7 +4,8 @@
   "description": "Work destined to the subject of Operations Research using graphs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch static/styles/sass/style.scss static/styles/css/style.css"
   },
   "author": "MatheusValera LuanBonifacio",
   "license": "ISC",
