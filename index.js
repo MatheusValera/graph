@@ -13,20 +13,38 @@ server.post('/sendData', (req, res) => {
   const listVertices = req.body.listVertices
   const listEdges = req.body.listEdges
   const option = req.body.option
+  let typeGraph = {}
+  let matrixAdjacency = {}
 
-  const matrixAdjacency = buildMatrixAdjacency(listVertices, listEdges)
-  console.log(`Matrix Adjacency ${option} ==> 
-  `,matrixAdjacency)
+  console.log('-----------------------------------------------------')
+  if(!verifyEdges(listEdges)){
+    matrixAdjacency = buildMatrixAdjacency(listVertices, listEdges)
+    console.log(`Matrix Adjacency - ${option} ==> 
+    \n`,matrixAdjacency,'\n')
+    typeGraph.simpleGraph = verifySimpleGraph(matrixAdjacency)
+    typeGraph.multiGraph = false
+  }
+  else{
+    typeGraph.multiGraph = true
+  }
 
   const matrixIncidence = buildMatrixIncidence(listVertices, listEdges, option)
-  console.log(`Matrix Incidence ${option} ==> 
-  `,matrixIncidence)
+  console.log(`Matrix Incidence - ${option} ==> 
+  \n`,matrixIncidence,'\n')
 
   const list = buildList(listVertices, listEdges, option)
-  console.log(`List ${option} ==> 
-  `,list)
+  console.log(`List - ${option} ==> 
+  \n`,list,'\n')
 
-  res.json({ status: true, matrixAdjacency, matrixIncidence, list })
+  typeGraph.completed = verifyCompletedGraph(matrixAdjacency)
+
+  typeGraph.regulated = verifyRegulatedGraph(matrixAdjacency)
+
+  console.log(`Classification - ${option} ==> 
+  \n`,typeGraph,'\n')
+
+  console.log('-----------------------------------------------------')
+  res.json({ status: true, matrixAdjacency, matrixIncidence, list, listEdges, listVertices, typeGraph })
 })
 
 server.listen(8080, () => {
@@ -54,21 +72,22 @@ buildMatrixAdjacency = (listV, listEdges) => {
 
 buildMatrixIncidence = (listV, listEdges, option) => {
   let matrix = []
-  listV.forEach((e)=>{matrix.push(buildMatrix(listV.length))})
-
+  
   if(option === 'graph'){
     let listAux = []
     for(elem of listEdges){
       if(!listAux.includes(elem.replace('(','').replace(')','').split("").reverse().join("")))
-        listAux.push(elem.replace('(','').replace(')',''))
+      listAux.push(elem.replace('(','').replace(')',''))
     }
+    listV.forEach((e)=>{matrix.push(buildMatrix(listAux.length))})
     for(elem of listAux){
       matrix[listV.indexOf(elem[0])][listAux.indexOf(elem)] = 1
       matrix[listV.indexOf(elem[2])][listAux.indexOf(elem)] = 1
     }
     return matrix
   }
-
+  
+  listV.forEach((e)=>{matrix.push(buildMatrix(listV.length))})
   for(elem of listEdges){
     matrix[listV.indexOf(elem[1])][listEdges.indexOf(elem)] = -1
     matrix[listV.indexOf(elem[3])][listEdges.indexOf(elem)] = 1
@@ -79,18 +98,22 @@ buildMatrixIncidence = (listV, listEdges, option) => {
 
 buildList = (listV, listEdges, option) => {
   const list = []
-  listV.forEach((e)=>{ list.push([e])})
   if(option === 'graph'){
-    list.forEach( (value) => {
+    listV.forEach((e)=>{ list.push([])})
+    listV.forEach( (value,index) => {
+
       listEdges.forEach( (edge) => {
-        if(edge[1] === value[0] && !value.includes(edge[3]))
-          value.push(edge[3])
-        else if(edge[3] === value[0] && !value.includes(edge[3]))
-          value.push(edge[1])
+
+        if(edge[1] === value && !list[index].includes(edge[3])) 
+          list[index].push(edge[3])
+        else if(edge[3] === value && !list[index].includes(edge[1]))
+          list[index].push(edge[1])
+
       })
     })
     return list
   }
+  listV.forEach((e)=>{ list.push([e])})
   list.forEach( (value) => {
     listEdges.forEach( (edge) => {
       if(edge[1] === value[0])
@@ -100,4 +123,53 @@ buildList = (listV, listEdges, option) => {
   return list
 }
 
-// (a.b),(b.a),(b.d),(d.b),(d.c),(c.d),(c.a),(a.c)
+verifyEdges = (listE) => {
+  let flag = false
+  listE.forEach((edge) => {
+    let regex = new RegExp(edge, 'g')
+    let length = listE.toString().match(regex)
+    if( length != null && length.length > 1)
+      flag = true
+  })
+  return flag
+}
+
+verifySimpleGraph = (matrix) => {
+  let simple = true
+  let i = 0
+  while(simple == true && i < matrix.length){
+    if(matrix[i][i] === 0)
+      simple = true
+    else{
+      simple = false
+    }
+    i++
+  }
+  return simple
+}
+
+verifyCompletedGraph = (matrix) => {
+  let flag = true
+  i=0
+  while(flag && i < matrix.length)
+  {
+    let line = matrix[i]
+    line.forEach( (elem,index) => {
+      if(index != i && elem === 0)
+        flag = false
+    })
+    i++
+  }
+  return flag
+}
+
+verifyRegulatedGraph = (matrix) => {
+  const line = matrix[0].toString()
+  const occurrences = line.match(new RegExp('0','g'))
+  flag = true
+  matrix.forEach((line) => {
+    if(occurrences != line.toString().match(new RegExp('0','g')))
+      flag = false
+  })
+  return flag
+}
