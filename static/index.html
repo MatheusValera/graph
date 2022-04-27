@@ -8,20 +8,29 @@
   <body>
     <main>
       <form>
+        <label for="vertices">Vertices:</label>
         <input type="text" placeholder="a,b,c,d,e,f..." id="vertices">
-        <label for="vertices">Vertices</label>
+        <label for="edges">Edges:</label>
         <input type="text" placeholder="(a.b),(b.c)..." id="edges">
-        <label for="edges">Edges</label>
-        <input type="radio" name="typeGraph" checked="" value="graph" id="graph">
-        <label for="vertices">Graph</label>
-        <input type="radio" name="typeGraph" value="digraph" id="digraph">
-        <label for="edges">Digraph</label>
+        <div>
+          <input type="radio" name="typeGraph" checked="" value="graph" id="graph">
+          <label for="vertices">Graph</label>
+        </div>
+        <div>
+          <input type="radio" name="typeGraph" value="digraph" id="digraph">
+          <label for="edges">Digraph</label>
+        </div>
+        <button onclick="getData()">Start</button>
       </form>
 
-      <div id="results"></div>
+      <div id="results">
+        <h1>Results</h1>
+        <div class="div-results">
+
+        </div>
+      </div>
     </main>
 
-    <button onclick="getData()">Gerar</button>
   </body>
   <script src="/static/scripts/script.js"></script>
 </html>
