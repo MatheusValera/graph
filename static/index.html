@@ -7,7 +7,7 @@
   </head>
   <body>
     <main>
-      <form>
+      <div class="form">
         <label for="vertices">Vertices:</label>
         <input type="text" placeholder="a,b,c,d,e,f..." id="vertices">
         <label for="edges">Edges:</label>
@@ -21,11 +21,10 @@
           <label for="edges">Digraph</label>
         </div>
         <button onclick="getData()">Start</button>
-      </form>
-
+      <div>
       <div id="results">
         <h1>Results</h1>
-        <div class="div-results">
+        <div class="div-results" id="resultsGraph">
 
         </div>
       </div>

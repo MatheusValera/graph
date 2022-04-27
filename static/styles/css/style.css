@@ -14,17 +14,17 @@ main {
   flex-direction: column;
 }
 
-form {
+.form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-bottom: 30px;
   border-bottom: rgb(214, 214, 214) dotted 4px;
 }
-form label {
+.form label {
   font-weight: 500;
 }
-form input[type=text] {
+.form input[type=text] {
   color: rgb(193, 193, 193);
   color: rgb(43, 165, 252);
   margin-bottom: 20px;
@@ -35,10 +35,10 @@ form input[type=text] {
   border-bottom: rgb(214, 214, 214) solid 2px;
   padding-top: 5px;
 }
-form input[type=text] -webkit-input-placeholder {
+.form input[type=text] -webkit-input-placeholder {
   background: black;
 }
-form button {
+.form button {
   background: rgb(43, 165, 252);
   border: rgb(0, 98, 177) double 4px;
   color: rgb(0, 0, 0);

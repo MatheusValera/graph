@@ -1,5 +1,5 @@
 const blocks = []
-const blockResult = document.getElementById('results')
+const blockResult = document.getElementById('resultsGraph')
 let listVertices = []
 let listEdges = []
 let option = 'graph'
