@@ -3,4 +3,69 @@
   font-size: 20px;
 }
 
+body {
+  width: 99vw;
+  background-color: black;
+  color: rgb(214, 214, 214);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 30px;
+  border-bottom: rgb(214, 214, 214) dotted 4px;
+}
+form label {
+  font-weight: 500;
+}
+form input[type=text] {
+  color: rgb(193, 193, 193);
+  color: rgb(43, 165, 252);
+  margin-bottom: 20px;
+  width: 30vh;
+  background: black;
+  outline: none;
+  border: none;
+  border-bottom: rgb(214, 214, 214) solid 2px;
+  padding-top: 5px;
+}
+form input[type=text] -webkit-input-placeholder {
+  background: black;
+}
+form button {
+  background: rgb(43, 165, 252);
+  border: rgb(0, 98, 177) double 4px;
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  margin-top: 20px;
+  width: 15vh;
+  border-radius: 7px;
+}
+
+#results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#results h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.div-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80vh;
+  min-height: 30vw;
+  border-radius: 8px;
+  border: rgb(214, 214, 214) double 4px;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -1,16 +1,73 @@
+$my-gray: rgb(214, 214, 214);
+$my-blue: rgb(43, 165, 252);
+
 * {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size:20px;
 }
 
 body {
+    width: 99vw;
     background-color: black;
+    color: $my-gray;
 }
   
 main {
-
+    display: flex;
+    flex-direction: column;
 }
 
 form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    label {
+        font-weight: 500;
+    }
+    input[type="text"] {
+        color: rgb(193, 193, 193);
+        color: $my-blue;
+        margin-bottom: 20px;
+        width: 30vh;
+        background: black;
+        outline: none;
+        border: none;
+        border-bottom: $my-gray solid 2px;
+        padding-top: 5px;
+        & -webkit-input-placeholder {
+            background: black;
+        }
+    }
+    button {
+        background: $my-blue;
+        border: rgb(0, 98, 177) double 4px;
+        color: rgb(0, 0, 0);
+        font-weight: 700;
+        margin-top: 20px;
+        width: 15vh;
+        border-radius: 7px;
+    }
+    padding-bottom: 30px;
+    border-bottom: $my-gray dotted 4px;
+}
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    h1 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+}
+
+.div-results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80vh;
+    min-height: 30vw;
+    border-radius: 8px;
+    border: $my-gray double 4px;
 
 }
