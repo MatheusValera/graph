@@ -14,7 +14,7 @@ server.post('/sendData', (req, res) => {
   const listEdges = req.body.listEdges
   const option = req.body.option
   let typeGraph = {}
-  let matrixAdjacency = {}
+  let matrixAdjacency = []
 
   console.log('-----------------------------------------------------')
   if(!verifyEdges(listEdges)){
@@ -36,9 +36,10 @@ server.post('/sendData', (req, res) => {
   console.log(`List - ${option} ==> 
   \n`,list,'\n')
 
-  typeGraph.completed = verifyCompletedGraph(matrixAdjacency)
-
-  typeGraph.regulated = verifyRegulatedGraph(matrixAdjacency)
+  if(matrixAdjacency){
+    typeGraph.completed = verifyCompletedGraph(matrixAdjacency)
+    typeGraph.regulated = verifyRegulatedGraph(matrixAdjacency)
+  }
 
   console.log(`Classification - ${option} ==> 
   \n`,typeGraph,'\n')
@@ -128,7 +129,7 @@ verifyEdges = (listE) => {
   listE.forEach((edge) => {
     let regex = new RegExp(edge, 'g')
     let length = listE.toString().match(regex)
-    if( length != null && length.length > 1)
+    if( length != null && length.length > 1 && edge[1] != edge[3])
       flag = true
   })
   return flag
@@ -164,12 +165,15 @@ verifyCompletedGraph = (matrix) => {
 }
 
 verifyRegulatedGraph = (matrix) => {
-  const line = matrix[0].toString()
-  const occurrences = line.match(new RegExp('0','g'))
-  flag = true
-  matrix.forEach((line) => {
-    if(occurrences != line.toString().match(new RegExp('0','g')))
-      flag = false
-  })
-  return flag
+  if(matrix.length) {
+    const line = matrix[0].toString()
+    const occurrences = line.match(new RegExp('0','g'))
+    flag = true
+    matrix.forEach((line) => {
+      if(occurrences != line.toString().match(new RegExp('0','g')))
+        flag = false
+    })
+    return flag
+  }
+  return false
 }
