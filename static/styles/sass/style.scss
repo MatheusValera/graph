@@ -3,15 +3,16 @@ $my-blue: rgb(43, 165, 252);
 
 * {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size:20px;
+    font-size: 20px;
+    box-sizing: border-box;
 }
 
 body {
-    width: 99vw;
+    width: 98vw;
     background-color: black;
     color: $my-gray;
 }
-  
+
 main {
     display: flex;
     flex-direction: column;
@@ -21,53 +22,124 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     label {
         font-weight: 500;
     }
+
     input[type="text"] {
         color: rgb(193, 193, 193);
-        color: $my-blue;
+        color: rgb(119, 194, 255);
         margin-bottom: 20px;
-        width: 30vh;
+        width: 50vh;
         background: black;
         outline: none;
         border: none;
         border-bottom: $my-gray solid 2px;
         padding-top: 5px;
+
         & -webkit-input-placeholder {
             background: black;
         }
     }
+
     button {
         background: $my-blue;
         border: rgb(0, 98, 177) double 4px;
         color: rgb(0, 0, 0);
-        font-weight: 700;
+        font-weight: 600;
         margin-top: 20px;
         width: 15vh;
         border-radius: 7px;
     }
+
     padding-bottom: 30px;
     border-bottom: $my-gray dotted 4px;
 }
 
 #results {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+
     h1 {
         font-size: 30px;
         font-weight: 600;
     }
+
+    .div-results {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 90vw;
+        min-height: 24vw;
+        border-radius: 8px;
+        border: $my-gray double 4px;
+        margin: 20px;
+        padding: 10px;
+        
+        h2 {
+            height: 30px;
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 28%;
+            min-height: 20vw;
+            border-radius: 6px;
+            border: $my-gray solid 3px;
+            padding: 15px;
+            margin: 15px;
+            overflow: auto;
+            div {
+                p {
+                    margin: 0;
+
+                    & :first-child {
+                        text-align: center;
+                    }
+                }
+            }
+            .hidden {
+                display: none !important;
+            }
+        }
+    }
 }
 
-.div-results {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80vh;
-    min-height: 30vw;
-    border-radius: 8px;
-    border: $my-gray double 4px;
+table {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    width: 100%;
+    td,
+    th {
+        padding: 5px;
+        border: 1px solid #ddd;
+        text-align: center;
+        font-weight: 400;
+        &:first-child{
+            background-color: $my-blue;
+        }
+    }
+    th {
+        &:first-child{
+            background-color: black;
+            border-left: none;
+            border-top: none;
+        }
+        background-color: $my-blue;
+        color: white;
+    }
+}
 
+#typeGraph {
+    p{
+        color: orangered;
+        font-weight: 500;
+    }
 }

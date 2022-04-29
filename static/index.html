@@ -1,35 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <title>Graph</title>
-    <link rel="stylesheet" href="/static/styles/css/style.css">
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <main>
-      <div class="form">
-        <label for="vertices">Vertices:</label>
-        <input type="text" placeholder="a,b,c,d,e,f..." id="vertices">
-        <label for="edges">Edges:</label>
-        <input type="text" placeholder="(a.b),(b.c)..." id="edges">
-        <div>
-          <input type="radio" name="typeGraph" checked="" value="graph" id="graph">
-          <label for="vertices">Graph</label>
-        </div>
-        <div>
-          <input type="radio" name="typeGraph" value="digraph" id="digraph">
-          <label for="edges">Digraph</label>
-        </div>
-        <button onclick="getData()">Start</button>
-      <div>
-      <div id="results">
-        <h1>Results</h1>
-        <div class="div-results" id="resultsGraph">
 
+<head>
+  <title>Graph</title>
+  <link rel="stylesheet" href="/static/styles/css/style.css">
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <main>
+    <div class="form">
+      <label for="vertices">Vertices:</label>
+      <input type="text" placeholder="a,b,c,d,e,f..." id="vertices">
+      <label for="edges">Edges:</label>
+      <input type="text" placeholder="(a.b),(b.c)..." id="edges">
+      <div>
+        <input type="radio" name="typeGraph" checked="" value="graph" id="graph">
+        <label for="vertices">Graph</label>
+      </div>
+      <div>
+        <input type="radio" name="typeGraph" value="digraph" id="digraph">
+        <label for="edges">Digraph</label>
+      </div>
+      <button onclick="getData()">Start</button>
+    </div>
+    <div>
+      <div id="results">
+        <h1>Results:</h1>
+        <div class="div-results" id="resultsGraph">
+          <div id='div-adjacency' class="div">
+            <h2>Adjacency</h2>
+            <table id="t-adjacency">
+
+            </table>
+          </div>
+          <div class="div">
+            <h2>Incidence</h2>
+            <table id="t-incidence">
+
+            </table>
+          </div>
+          <div class="div">
+            <h2>List</h2>
+            <table id="t-list">
+
+            </table>
+          </div>
+          <div id='typeGraph' class="div">
+            <h2>Classification</h2>
+            <div id="classification"></div>
+          </div>
         </div>
       </div>
-    </main>
+    </div>
 
-  </body>
-  <script src="/static/scripts/script.js"></script>
+  </main>
+
+</body>
+<script src="/static/scripts/script.js"></script>
+
 </html>

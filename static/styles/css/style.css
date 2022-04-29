@@ -1,10 +1,11 @@
 * {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 20px;
+  box-sizing: border-box;
 }
 
 body {
-  width: 99vw;
+  width: 98vw;
   background-color: black;
   color: rgb(214, 214, 214);
 }
@@ -26,9 +27,9 @@ main {
 }
 .form input[type=text] {
   color: rgb(193, 193, 193);
-  color: rgb(43, 165, 252);
+  color: rgb(119, 194, 255);
   margin-bottom: 20px;
-  width: 30vh;
+  width: 50vh;
   background: black;
   outline: none;
   border: none;
@@ -42,7 +43,7 @@ main {
   background: rgb(43, 165, 252);
   border: rgb(0, 98, 177) double 4px;
   color: rgb(0, 0, 0);
-  font-weight: 700;
+  font-weight: 600;
   margin-top: 20px;
   width: 15vh;
   border-radius: 7px;
@@ -50,22 +51,81 @@ main {
 
 #results {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 #results h1 {
   font-size: 30px;
   font-weight: 600;
 }
-
-.div-results {
+#results .div-results {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80vh;
-  min-height: 30vw;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 90vw;
+  min-height: 24vw;
   border-radius: 8px;
   border: rgb(214, 214, 214) double 4px;
+  margin: 20px;
+  padding: 10px;
+}
+#results .div-results h2 {
+  height: 30px;
+  font-size: 22px;
+  font-weight: 500;
+}
+#results .div-results .div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 28%;
+  min-height: 20vw;
+  border-radius: 6px;
+  border: rgb(214, 214, 214) solid 3px;
+  padding: 15px;
+  margin: 15px;
+  overflow: auto;
+}
+#results .div-results .div div p {
+  margin: 0;
+}
+#results .div-results .div div p :first-child {
+  text-align: center;
+}
+#results .div-results .div .hidden {
+  display: none !important;
+}
+
+table {
+  border-collapse: collapse;
+  box-sizing: border-box;
+  width: 100%;
+}
+table td,
+table th {
+  padding: 5px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-weight: 400;
+}
+table td:first-child,
+table th:first-child {
+  background-color: rgb(43, 165, 252);
+}
+table th {
+  background-color: rgb(43, 165, 252);
+  color: white;
+}
+table th:first-child {
+  background-color: black;
+  border-left: none;
+  border-top: none;
+}
+
+#typeGraph p {
+  color: orangered;
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=style.css.map */

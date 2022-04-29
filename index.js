@@ -17,6 +17,7 @@ server.post('/sendData', (req, res) => {
   let matrixAdjacency = []
 
   console.log('-----------------------------------------------------')
+  typeGraph.simpleGraph = false
   if(!verifyEdges(listEdges)){
     matrixAdjacency = buildMatrixAdjacency(listVertices, listEdges)
     console.log(`Matrix Adjacency - ${option} ==> 
@@ -45,7 +46,7 @@ server.post('/sendData', (req, res) => {
   \n`,typeGraph,'\n')
 
   console.log('-----------------------------------------------------')
-  res.json({ status: true, matrixAdjacency, matrixIncidence, list, listEdges, listVertices, typeGraph })
+  res.json({ status: true, matrixAdjacency, matrixIncidence, list, listEdges, listVertices, typeGraph, option })
 })
 
 server.listen(8080, () => {
@@ -78,7 +79,7 @@ buildMatrixIncidence = (listV, listEdges, option) => {
     let listAux = []
     for(elem of listEdges){
       if(!listAux.includes(elem.replace('(','').replace(')','').split("").reverse().join("")))
-      listAux.push(elem.replace('(','').replace(')',''))
+        listAux.push(elem.replace('(','').replace(')',''))
     }
     listV.forEach((e)=>{matrix.push(buildMatrix(listAux.length))})
     for(elem of listAux){
@@ -88,7 +89,7 @@ buildMatrixIncidence = (listV, listEdges, option) => {
     return matrix
   }
   
-  listV.forEach((e)=>{matrix.push(buildMatrix(listV.length))})
+  listV.forEach((e)=>{matrix.push(buildMatrix(listEdges.length))})
   for(elem of listEdges){
     matrix[listV.indexOf(elem[1])][listEdges.indexOf(elem)] = -1
     matrix[listV.indexOf(elem[3])][listEdges.indexOf(elem)] = 1
