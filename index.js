@@ -177,4 +177,4 @@ verifyRegulatedGraph = (matrix) => {
     return flag
   }
   return false
-}
+} //this is a comment
